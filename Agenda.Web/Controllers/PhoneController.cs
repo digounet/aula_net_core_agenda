@@ -18,12 +18,12 @@ namespace Agenda.Web.Controllers
         public IActionResult Index(Guid idPessoa)
         {
             ViewBag.IdPessoa = idPessoa;
-            return View(_phoneService.GetPhones());
+            return View(_phoneService.GetPhones(idPessoa));
         }
 
-        public ActionResult Create(Guid idPessoa) {
+        public ActionResult Create(Guid idPessoa) 
+        {
 
-            //var person = _phoneService.GetPhoneById(idPessoa);
             ViewBag.IdPessoa = idPessoa;
             return View();
 

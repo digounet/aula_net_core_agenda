@@ -2,18 +2,12 @@
 using Agenda.Application.Repository;
 using Agenda.Application.ViewModel;
 using Agenda.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agenda.Application.Service
 {
     public class PhoneService : IPhoneService
     {
         private readonly IPhoneRepository _phoneRepository;
-        private readonly IPersonRepository _personRepository;
 
         public PhoneService(IPhoneRepository phoneRepository)
         {
@@ -42,9 +36,9 @@ namespace Agenda.Application.Service
             };
         }
 
-        public List<PhoneViewModel> GetPhones()
+        public List<PhoneViewModel> GetPhones(Guid personId)
         {
-            var phones = _phoneRepository.Get();
+            var phones = _phoneRepository.GetByPerson(personId);
             var response = new List<PhoneViewModel>();
             foreach (var phone in phones)
             {
@@ -68,8 +62,15 @@ namespace Agenda.Application.Service
 
         public void UpdatePhone(PhoneViewModel phoneViewModel, Guid idPessoa)
         {
-            
-            var phone = new Phone(phoneViewModel.Id, idPessoa, phoneViewModel.PhoneNumber);
+            var existingPhone = _phoneRepository.GetById(phoneViewModel.Id);
+
+            if (existingPhone == null)
+            {
+                throw new Exception("Phone not found");
+            }
+
+
+            var phone = new Phone(existingPhone.Id, idPessoa, phoneViewModel.PhoneNumber);
             _phoneRepository.Update(phone);
         }
 

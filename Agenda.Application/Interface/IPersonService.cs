@@ -4,7 +4,7 @@ namespace Agenda.Application.Interface
 {
     public interface IPersonService
     {
-        public void AddPerson(PersonViewModel personViewModel, PhoneViewModel phoneViewModel);
+        public void AddPerson(PersonViewModel personViewModel);
 
         public void UpdatePerson(PersonViewModel personViewModel);
 
@@ -12,6 +12,6 @@ namespace Agenda.Application.Interface
 
         public List<PersonViewModel> GetPersons();
 
-        public PersonViewModel GetPersonById(Guid id);
+        public PersonDetailViewModel GetPersonById(Guid id);
     }
 }

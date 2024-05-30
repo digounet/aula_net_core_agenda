@@ -1,13 +1,10 @@
-﻿using Agenda.Domain.Models;
+﻿using Agenda.Domain.Enums;
+using Agenda.Domain.Models;
 
 namespace Agenda.Application.Repository
 {
-    public interface IPersonRepository //<T> where T : class
+    public interface IPersonRepository : IRepository<Person>
     {
-        void Add(Person person);
-        void Remove(Person person);
-        void Update(Person person);
-        Person? GetById(Guid id);
-        List<Person> Get();
+        public List<Person> GetByGender(Gender gender);
     }
 }

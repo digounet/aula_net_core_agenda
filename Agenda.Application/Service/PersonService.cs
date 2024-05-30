@@ -16,21 +16,19 @@ namespace Agenda.Application.Service
             _phoneRepository = phoneRepository;
         }
 
-        public void AddPerson(PersonViewModel personViewModel, PhoneViewModel phoneViewModel)
+        public void AddPerson(PersonViewModel personViewModel)
         {
             var personId = Guid.NewGuid();
             var person = new Person(personId, personViewModel.Name, personViewModel.Birthday, personViewModel.Gender);
             var phone = new Phone(Guid.NewGuid(), personId, personViewModel.PhoneNumber);
             _personRepository.Add(person);
             _phoneRepository.Add(phone);
-            person.PhoneNumbers.Add(new Phone(Guid.NewGuid(), personId, personViewModel.PhoneNumber));
-
-
         }
 
         public void UpdatePerson(PersonViewModel personViewModel)
         {
             var person = new Person(personViewModel.Id, personViewModel.Name, personViewModel.Birthday, personViewModel.Gender);
+
             _personRepository.Update(person);
         }
 
@@ -51,6 +49,7 @@ namespace Agenda.Application.Service
                     Id = person.Id,
                     Name = person.Name,
                     Birthday = person.Birthday,
+                    Gender = person.Gender,
                 });
             }
 
@@ -58,16 +57,25 @@ namespace Agenda.Application.Service
             return response;
         }
 
-        public PersonViewModel GetPersonById(Guid id)
+        public PersonDetailViewModel GetPersonById(Guid id)
         {
-            var person = _personRepository.GetById(id); 
-            return new PersonViewModel
+            var person = _personRepository.GetById(id);
+            var personViewModel = new PersonDetailViewModel
             {
                 Id = person.Id,
                 Name = person.Name,
                 Birthday = person.Birthday,
                 Gender = person.Gender
-            };  
+            };
+
+            personViewModel.PhoneNumbers = person.PhoneNumbers.Select(x => new PhoneViewModel
+            {
+                Id = x.Id,
+                PhoneNumber = x.PhoneNumber,
+                PersonId = x.PersonId
+            }).ToList();
+
+            return personViewModel;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace Agenda.Web.Controllers
         // GET: PersonController
         public ActionResult Index()
         {
-            return View(_personService.GetPersons());
+            var persons = _personService.GetPersons();
+            return View(persons);
         }
 
         // GET: PersonController/Details/5
@@ -35,11 +36,11 @@ namespace Agenda.Web.Controllers
         // POST: PersonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PersonViewModel personViewModel, PhoneViewModel phoneViewModel)
+        public ActionResult Create(PersonViewModel personViewModel)
         {
             try
             {
-                _personService.AddPerson(personViewModel,phoneViewModel);
+                _personService.AddPerson(personViewModel);
                 return RedirectToAction(nameof(Index));
             }
             catch

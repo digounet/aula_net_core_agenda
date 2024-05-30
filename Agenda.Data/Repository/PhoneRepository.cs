@@ -1,50 +1,18 @@
 ﻿using Agenda.Application.Repository;
+using Agenda.Data.Context;
 using Agenda.Domain.Models;
 
 namespace Agenda.Data.Repository
 {
-    public class PhoneRepository : IPhoneRepository
+    public class PhoneRepository : Repository<Phone>, IPhoneRepository
     {
-        private readonly List<Phone> _phones;
-
-        public PhoneRepository()
+        public PhoneRepository(AgendaDbContext context) : base(context)
         {
-            _phones = new List<Phone>();
         }
 
-        public void Add(Phone phone)
+        public IEnumerable<Phone> GetByPerson(Guid personId)
         {
-            _phones.Add(phone);
-        }
-
-        public void Remove(Phone phone)
-        {
-            _phones.Remove(phone);
-        }
-
-        public void Update(Phone phone)
-        {
-            var existingPhone = _phones.FirstOrDefault(p => p.Id == phone.Id);
-            if (existingPhone != null)
-            {
-                _phones.Remove(existingPhone);
-                _phones.Add(phone);
-            }
-        }
-
-        public Phone? GetById(Guid id)
-        {
-            return _phones.FirstOrDefault(p => p.Id == id);
-        }
-
-        public List<Phone>? GetByPersonId(Guid personId)
-        {
-            return _phones.Where(p => p.PersonId == personId).ToList();
-        }
-
-        public List<Phone> Get()
-        {
-            return _phones;
+            return DbSet.Where(x => x.PersonId == personId).ToList();
         }
     }
 }

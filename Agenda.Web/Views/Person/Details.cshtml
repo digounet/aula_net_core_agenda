@@ -1,5 +1,5 @@
 ﻿@using Agenda.Domain.Enums
-@model Agenda.Application.ViewModel.PersonViewModel
+@model Agenda.Application.ViewModel.PersonDetailViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -28,11 +28,29 @@
                 <label asp-for="Gender" class="control-label"></label>
                 <input asp-for="Gender" class="form-control" disabled />
             </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" disabled />
-                <h5>Espaço acima para listar todos os telefones</h5>
-            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumbers)
+                    </th>  
+                </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var item in Model.PhoneNumbers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+
+                    </tr>
+                }
+
+                </tbody>
+            </table>
 
         </form>
     </div>

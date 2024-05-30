@@ -1,10 +1,10 @@
-﻿using System.ComponentModel;
+﻿using Agenda.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
-using Agenda.Domain.Enums;
+using System.ComponentModel;
 
 namespace Agenda.Application.ViewModel
 {
-    public class PersonViewModel
+    public class PersonDetailViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +15,6 @@ namespace Agenda.Application.ViewModel
         public Gender Gender { get; set; }
 
         [DisplayName("Phone")]
-        public string PhoneNumber { get; set; }
+        public List<PhoneViewModel> PhoneNumbers { get; set; }
     }
 }

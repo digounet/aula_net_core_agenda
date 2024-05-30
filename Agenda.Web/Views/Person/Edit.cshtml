@@ -1,5 +1,5 @@
 ﻿@using Agenda.Domain.Enums
-@model Agenda.Application.ViewModel.PersonViewModel
+@model Agenda.Application.ViewModel.PersonDetailViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -31,11 +31,6 @@
                     <option value="@Gender.OTHER">Outro</option>
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />

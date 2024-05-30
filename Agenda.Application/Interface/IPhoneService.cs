@@ -15,7 +15,7 @@ namespace Agenda.Application.Interface
 
         public void RemovePhone(Guid id);
 
-        public List<PhoneViewModel> GetPhones();
+        public List<PhoneViewModel> GetPhones(Guid personId);
 
         public PhoneViewModel GetPhoneById(Guid id);
     }

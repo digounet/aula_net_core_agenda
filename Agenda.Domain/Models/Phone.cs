@@ -1,10 +1,10 @@
 ﻿namespace Agenda.Domain.Models
 {
-    public class Phone
+    public class Phone : Entity
     {
-        public Guid Id { get; private set; }
         public Guid PersonId { get; private set; }
         public string PhoneNumber { get; private set; }
+        public virtual Person Person { get; set; }
 
         public Phone(Guid id, Guid personId, string phoneNumber)
         {

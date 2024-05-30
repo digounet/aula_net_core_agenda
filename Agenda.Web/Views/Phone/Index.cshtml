@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Agenda.Application.ViewModel.PhoneViewModel>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-idPessoa="@ViewBag.idPessoa">Create New</a>
+</p>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonId)  
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>  
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model.Where(m => m.PersonId == ViewBag.idPessoa))
+        {
+            <tr>
+      
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id, idPessoa = item.PersonId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+                
+            </tr>
+        }
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+           
+    </tbody>
+</table>

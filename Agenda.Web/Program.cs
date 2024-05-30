@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonService, PersonService>();
 
+builder.Services.AddSingleton<IPhoneRepository, PhoneRepository>();
+builder.Services.AddScoped<IPhoneService, PhoneService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

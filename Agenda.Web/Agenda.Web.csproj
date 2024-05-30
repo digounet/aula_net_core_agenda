@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Person\NovaPasta\**" />
+    <Content Remove="Views\Person\NovaPasta\**" />
+    <EmbeddedResource Remove="Views\Person\NovaPasta\**" />
+    <None Remove="Views\Person\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Person\Delete.cshtml.cs" />
+    <Compile Remove="Views\Person\Details.cshtml.cs" />
+    <Compile Remove="Views\Person\Index1.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Person\Index1.cshtml" />
+    <Content Remove="Views\Shared\Enum.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>

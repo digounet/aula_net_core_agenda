@@ -1,8 +1,9 @@
-﻿using Agenda.Domain.Models;
+﻿using Agenda.Application.Repository;
+using Agenda.Domain.Models;
 
 namespace Agenda.Data.Repository
 {
-    public class PhoneRepository
+    public class PhoneRepository : IPhoneRepository
     {
         private readonly List<Phone> _phones;
 
@@ -39,6 +40,11 @@ namespace Agenda.Data.Repository
         public List<Phone>? GetByPersonId(Guid personId)
         {
             return _phones.Where(p => p.PersonId == personId).ToList();
+        }
+
+        public List<Phone> Get()
+        {
+            return _phones;
         }
     }
 }

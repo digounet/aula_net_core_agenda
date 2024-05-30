@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Domain", "Agenda.Domain\Agenda.Domain.csproj", "{D86B8BC6-B19D-4921-BC74-3EDD12659DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Domain", "Agenda.Domain\Agenda.Domain.csproj", "{D86B8BC6-B19D-4921-BC74-3EDD12659DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Data", "Agenda.Data\Agenda.Data.csproj", "{345C4CBC-8018-4697-BA66-C12C8790E0E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Data", "Agenda.Data\Agenda.Data.csproj", "{345C4CBC-8018-4697-BA66-C12C8790E0E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Application", "Agenda.Application\Agenda.Application.csproj", "{7F1BB6C7-A448-4B1D-AF08-7ED815652033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Application", "Agenda.Application\Agenda.Application.csproj", "{7F1BB6C7-A448-4B1D-AF08-7ED815652033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agenda.Web", "Agenda.Web\Agenda.Web.csproj", "{F6265D32-DF4C-4C5F-AF59-EAAC01CB9EB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agenda.Web", "Agenda.Web\Agenda.Web.csproj", "{F6265D32-DF4C-4C5F-AF59-EAAC01CB9EB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - UI", "1 - UI", "{FB3DAA10-3AE9-4702-8A01-87D14986D007}"
 EndProject

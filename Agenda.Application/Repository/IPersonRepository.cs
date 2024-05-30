@@ -2,7 +2,7 @@
 
 namespace Agenda.Application.Repository
 {
-    public interface IPersonRepository
+    public interface IPersonRepository //<T> where T : class
     {
         void Add(Person person);
         void Remove(Person person);
